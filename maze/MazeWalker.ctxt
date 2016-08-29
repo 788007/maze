@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=MazeWalker()
+comment1.params=y
+comment1.target=int\ sampleMethod(int)
+comment2.params=mazeBot
+comment2.target=void\ walkMaze(MazeBot)
+numComments=3
