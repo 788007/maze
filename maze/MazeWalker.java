@@ -4,13 +4,17 @@
  */
 public class MazeWalker
 {
-    // instance variables - replace the example below with your own
+    public static void run()
+    {
+        Maze maze = new Maze();
+        MazeWalker mazeWalker = new MazeWalker();
+        mazeWalker.walkMaze(maze.getMazeBot());
+    }
+    
     private int x;
 
-  
     public MazeWalker()
     {
-        // initialise instance variables
         x = 0;
     }
 
@@ -22,32 +26,16 @@ public class MazeWalker
     public void walkMaze(MazeBot mazeBot) {
         while (mazeBot.canMoveForward()) {
             mazeBot.moveForward();
+            if (mazeBot.canMoveForward() == false) {
+              mazeBot.turnRight();
+              if (mazeBot.canMoveForward() == false) {
+                mazeBot.turnLeft();
+                mazeBot.turnLeft();
+              }
+           }
+       
         }
-        mazeBot.turnLeft();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-        mazeBot.turnRight();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-        mazeBot.turnRight();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-        mazeBot.turnLeft();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-        mazeBot.turnLeft();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-        mazeBot.turnRight();
-        while (mazeBot.canMoveForward()) {
-            mazeBot.moveForward();
-        }
-    
+        
         if (mazeBot.didReachGoal()) {
            mazeBot.signalSuccess();
         }else{
